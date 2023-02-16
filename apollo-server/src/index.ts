@@ -9,10 +9,13 @@ const typeDefs = `#graphql
   }
 
   # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
+  # clients can execute, along with the return type for each. 
   type Query {
     books: [Book]
+  }
+
+  type Mutation {
+    addBook(title: String, author: String): Book
   }
 
 `;
@@ -31,11 +34,17 @@ const books = [
 
 
   // Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
 const resolvers = {
     Query: {
       books: () => books,
     },
+    Mutation: {
+      addBook: (title: string, author: string) => {
+          const book = {title, author};
+          books.push(book);
+          return book;
+      }
+    } 
   };
 
   // The ApolloServer constructor requires two parameters: your schema
