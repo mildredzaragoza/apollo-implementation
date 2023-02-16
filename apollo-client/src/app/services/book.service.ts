@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book, Query } from '../types';
-import { Apollo } from 'apollo-angular';
+import { Apollo, Mutation } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 
@@ -28,4 +28,6 @@ export class BookService {
         map(result => result.data.books)
       );
   }
+
+ 
 }

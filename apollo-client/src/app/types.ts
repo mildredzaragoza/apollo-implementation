@@ -6,3 +6,10 @@ export type Book = {
 export type Query = {
     books: [Book];
 }
+
+export class BookModel{
+    constructor(
+        public title: string,
+        public author: string,
+    ){}
+}
