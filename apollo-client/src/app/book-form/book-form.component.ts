@@ -10,12 +10,14 @@ import { BookService } from '../services/book.service';
 export class BookFormComponent {
   books: BookModel[] = [];
   constructor(private bookService: BookService) { }
-  model = new BookModel('','');
+  model = new BookModel('The bible','jessus');
   submitted = false;
   onSubmit(){ this.submitted = true; }
-  add(title: string, author: string): void {
-    title = title.trim();
+  add(title: String, author: String): void {
+    console.log('title: ' + title + "author: " + author)
+   /* title = title.trim();
     author = author.trim();
-    if (!title || !author) { return; }
+    if (!title || !author) { return; } */
+    this.bookService.addBook();
   }
 }

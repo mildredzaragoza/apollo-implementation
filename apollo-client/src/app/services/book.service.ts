@@ -29,5 +29,17 @@ export class BookService {
       );
   }
 
- 
+  addBook(){
+    this.apollo.mutate<Book>({
+      mutation: gql`
+        mutation AddBook{
+         addBook(title: "The Bible", author: "Jesus"){
+           title
+           author
+          }
+        s}
+    `
+    }).subscribe(
+      result => console.log(result))
+  }
 }
