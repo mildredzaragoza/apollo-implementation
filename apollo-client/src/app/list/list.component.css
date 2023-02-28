@@ -1,0 +1,8 @@
+button{
+    width: 80px;
+    margin-right: 4px;
+}
+
+.container:hover{
+    background-color: ghostwhite;
+}

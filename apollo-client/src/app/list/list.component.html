@@ -1,8 +1,12 @@
 <div *ngFor="let book of books">
-    <div class="card" style="width: 100%; margin-top: 10px">
+    <div class="card container" style="width: 100%; margin-top: 10px">
       <div class="card-body">
         <h5 class="card-title">{{ book.title }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">by {{ book.author }}</h6>
+        <div class="buttons-container">
+          <button class="btn btn-primary" (click)="editBook(book.id, book.title, book.author)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button>
+        </div>
       </div>
     </div>
   </div>

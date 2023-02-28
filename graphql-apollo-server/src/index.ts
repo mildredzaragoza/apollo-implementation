@@ -19,8 +19,8 @@ const typeDefs = `#graphql
 
   type Mutation {
     addBook(title: String, author: String): Book
-    updateBook(id: Int!, title: String!, author: String!): Book
-    deleteBook(title: String): [Book]
+    updateBook(id: Int, title: String, author: String): Book
+    deleteBook(id: Int): [Book]
   }
 `;
 
@@ -46,13 +46,14 @@ const resolvers = {
     Mutation: {
         addBook: (_, {title, author}) => {
             const sizee = books.length;
-            const book = {id: books.length + 1, title, author};
+            const book = {id: books.length + 5, title, author};
             books.push(book);
             return book;
         },
-        deleteBook: (root, { title }) => {
-            const index = books.indexOf(title);
-            books.splice(index,1);
+        deleteBook: (root, { id }) => {
+            const bookToDelete = books.find(book => book.id == id);
+            const index = books.indexOf(bookToDelete);
+            books.splice(index,1)
             return books;
         },
         updateBook:(root, {id, title, author}) => {
